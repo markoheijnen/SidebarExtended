@@ -5,7 +5,12 @@ class Sidebar_Core {
 	private $widget_counter = array();
 
 	function __construct() {
+		add_action( 'after_switch_theme', 'load_default_theme_widgets', 10, 2 );
+	}
 
+	function load_default_widgets( $old_theme, $WP_theme = null ) {
+
+		do_action( 'sidebar_extended_default_widgets', $old_theme, $WP_theme );
 	}
 
 	public function register_default_widget( $sidebar, $widgets ) {
